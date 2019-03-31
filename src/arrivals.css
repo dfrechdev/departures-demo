@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: "Roboto", sans-serif;
+}
+.t-Cards--basic .t-Card-titleWrap {
+    background-color: #49abdf;
+}
+.t-Card-title,
+.t-ClassicCalendar-monthTitle {
+    color: white;
+}
+.t-Card-body {
+    border: #49abdf 1px solid;
+}
+.t-Cards--basic.t-Cards--displaySubtitle .t-Card-subtitle.flight-card-subtitle {
+    font-size: 1.2rem !important;
+    color: white !important;
+}
+.t-Body .t-Footer {
+    display: none;
+}
+.t-Header-branding {
+    background-color: #49abdf;
+    height: 75px;
+}
+.t-Header-logo {
+    padding-left: 25px;
+    font-size: 2.5rem;
+}
+.t-Header-logo a:hover {
+    color: #b8dbfd;
+}
+.t-Login-header {
+    padding: 8px 0 40px 0;
+}
+.t-Body-main {
+    margin-top: 75px;
+}
+.t-Login-buttons .t-Button--hot:not(.t-Button--simple) {
+    background-color: #49abdf;
+}
+.t-Login-buttons {
+    margin-top: 25px;
+}
+body .t-Login-title {
+    font-size: 3.2rem;
+    color: #49abdf;
+}
+#P9999_REMEMBER_CONTAINER,
+.t-Login-logo {
+    display: none;
+}
+.t-Body-contentInner {
+    background: white;
+}
+.ui.fluid.card {
+    box-shadow: 0 1px 3px 0 #3488cf, 0 0 0 1px #3488cf;
+    font-size: 1.1rem;
+}
+.flight-details {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.ui.card > .content > .header.flight-header {
+    color: #3488cf;
+}
+#flights-container {
+    padding: 0 10px;
+}
+.t-Cards--basic.t-Cards--displaySubtitle .t-Card-subtitle.flight-card-subtitle {
+    font-size: 14px;
+    color: black;
+}
+.flight-codeshares {
+    color: darkgrey;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin-top: 15px;
+}

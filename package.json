@@ -1,0 +1,20 @@
+{
+    "name": "arrivals",
+    "version": "1.0.0",
+    "description": "A demo Oracle APEX application that consumes data from the Schipol airport flight API and displays the arriving flights.",
+    "scripts": {
+        "launch": "apex-nitro launch arrivals",
+        "publish": "apex-nitro publish arrivals",
+        "config": "apex-nitro config arrivals"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dfrechdev/arrivals.git"
+    },
+    "author": "Daniel Frech",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/dfrechdev/arrivals/issues"
+    },
+    "homepage": "https://github.com/dfrechdev/arrivals#readme"
+}

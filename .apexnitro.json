@@ -1,0 +1,37 @@
+{
+    "mode": "advanced",
+    "appURL": "http://localhost:8080/ords/f?p=100",
+    "srcFolder": "C:\\dfrechdev\\git\\airport-app\\airport-ui\\src",
+    "distFolder": "C:\\dfrechdev\\git\\airport-app\\airport-ui\\dist",
+    "js": {
+        "processor": "default",
+        "concat": false,
+        "tsConcat": false
+    },
+    "css": {
+        "language": "css",
+        "concat": false
+    },
+    "browsersync": {
+        "realTime": true,
+        "ghostMode": false,
+        "notify": false
+    },
+    "header": {
+        "enabled": false
+    },
+    "apex": {
+        "openBuilder": false
+    },
+    "publish": {
+        "destination": "application",
+        "path": "C:\\Program Files\\Oracle\\sqlcl\\bin\\sql",
+        "connectionType": "basic",
+        "username": "airport",
+        "password": "airport",
+        "host": "localhost",
+        "port": "1521",
+        "basicType": "service name",
+        "serviceName": "orcl"
+    }
+}
