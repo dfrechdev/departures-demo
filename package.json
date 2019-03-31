@@ -1,7 +1,7 @@
 {
     "name": "arrivals",
     "version": "1.0.0",
-    "description": "A demo Oracle APEX application that consumes data from the Schipol airport flight API and displays the arriving flights.",
+    "description": "A demo Oracle APEX application for my talk on async-await, that consumes data from the Schipol airport flight API and displays arriving flights.",
     "scripts": {
         "launch": "apex-nitro launch arrivals",
         "publish": "apex-nitro publish arrivals",

@@ -1,13 +1,14 @@
 /**
  * @description loading flights using callback functions and catching any possible errors in the callbacks
+ * => must be used with the FlightAPICallbackService!
  */
-loadFlightsWithCallback = () => {
+loadFlightsWithCallback = apiService => {
     cardService.clearFlightsContainer();
-    apiService.getFlightsCallback(flights => {
+    apiService.getFlights(flights => {
         flights.forEach(flight => {
-            apiService.getAirlineCallback(flight, airline => {
-                apiService.getAircraftCallback(flight, aircraft => {
-                    apiService.getDestinationCallback(flight, destination => {
+            apiService.getAirline(flight, airline => {
+                apiService.getAircraft(flight, aircraft => {
+                    apiService.getDestination(flight, destination => {
                         cardService.addFlightCardToPage(flight, airline, aircraft, destination);
                     });
                 });
@@ -18,25 +19,26 @@ loadFlightsWithCallback = () => {
 
 /**
  * @description loading flights fetching the details consecutively using promises and catching any error along the promise chain
+ * => must be used with the FlightAPIPromiseService!
  */
-loadFlightsWithPromise = () => {
+loadFlightsWithPromise = apiService => {
     cardService.clearFlightsContainer();
     apiService
-        .getFlightsPromise()
+        .getFlights()
         .then(flights => {
             // for (flight of flights) {
             flights.forEach(flight => {
                 // const arrivingFlight = flight;
                 let airline, aircraft, destination;
                 apiService
-                    .getAirlinePromise(flight)
+                    .getAirline(flight)
                     .then(data => {
                         airline = data;
-                        return apiService.getAircraftPromise(flight);
+                        return apiService.getAircraft(flight);
                     })
                     .then(data => {
                         aircraft = data;
-                        return apiService.getDestinationPromise(flight);
+                        return apiService.getDestination(flight);
                     })
                     .then(data => {
                         destination = data;
@@ -54,16 +56,17 @@ loadFlightsWithPromise = () => {
 
 /**
  * @description loading flights fetching the details in parallel using promises and catching any error along the promise chain
+ * => must be used with the FlightAPIPromiseService!
  */
 loadFlightsWithPromiseAll = () => {
     cardService.clearFlightsContainer();
     apiService
-        .getFlightsPromise()
+        .getFlights()
         .then(flights => {
             flights.forEach(flight => {
-                const pAirline = apiService.getAirlinePromise(flight);
-                const pAircraft = apiService.getAircraftPromise(flight);
-                const pDestination = apiService.getDestinationPromise(flight);
+                const pAirline = apiService.getAirline(flight);
+                const pAircraft = apiService.getAircraft(flight);
+                const pDestination = apiService.getDestination(flight);
                 Promise.all([pAirline, pAircraft, pDestination])
                     .then(([airline, aircraft, destination]) => {
                         cardService.addFlightCardToPage(flight, airline, aircraft, destination);
@@ -80,15 +83,16 @@ loadFlightsWithPromiseAll = () => {
 
 /**
  * @description loading flights and fetching the details consecutively using async/await and catching any error during the operation
+ * => must be used with the FlightAPIPromiseService!
  */
 loadFlightsWithAsyncAwait = async () => {
     cardService.clearFlightsContainer();
     try {
-        const flights = await apiService.getFlightsPromise();
+        const flights = await apiService.getFlights();
         for (flight of flights) {
-            const airline = await apiService.getAirlinePromise(flight);
-            const aircraft = await apiService.getAircraftPromise(flight);
-            const destination = await apiService.getDestinationPromise(flight);
+            const airline = await apiService.getAirline(flight);
+            const aircraft = await apiService.getAircraft(flight);
+            const destination = await apiService.getDestination(flight);
             cardService.addFlightCardToPage(flight, airline, aircraft, destination);
         }
     } catch (err) {
@@ -98,15 +102,16 @@ loadFlightsWithAsyncAwait = async () => {
 
 /**
  * @description loading flights and fetching the details in parallel using async/await and catching any error during the operation
+ * => must be used with the FlightAPIPromiseService!
  */
 loadFlightsWithAsyncAwaitAll = async () => {
     cardService.clearFlightsContainer();
     try {
-        const flights = await apiService.getFlightsPromise();
+        const flights = await apiService.getFlights();
         for (flight of flights) {
-            const pAirline = apiService.getAirlinePromise(flight);
-            const pAircraft = apiService.getAircraftPromise(flight);
-            const pDestination = apiService.getDestinationPromise(flight);
+            const pAirline = apiService.getAirline(flight);
+            const pAircraft = apiService.getAircraft(flight);
+            const pDestination = apiService.getDestination(flight);
             const [airline, aircraft, destination] = await Promise.all([
                 pAirline,
                 pAircraft,
