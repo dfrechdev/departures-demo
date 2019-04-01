@@ -1,6 +1,6 @@
-# Arrivals
+# Departures
 
-A demo Oracle APEX application that consumes data from the Schipol airport flight API and displays the arriving flights.
+A demo Oracle APEX application that consumes data from the Schipol airport flight API and displays the departing flights.
 
 ## Prerequisites
 
