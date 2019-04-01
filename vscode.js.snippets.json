@@ -1,0 +1,208 @@
+{
+	"forEachLoop": {
+		"prefix": ".forEach",
+		"body": [
+			".forEach(${1:element} => {",
+			"    ",
+			"})"
+		],
+		"description": "create a let variable"
+	},
+	"forOfLoop": {
+		"prefix": "forof",
+		"body": [
+			"for(const ${1:arrayItem} of ${2:array}){",
+			"    ",
+			"}"
+		],
+		"description": "create a let variable"
+	},
+	"promise": {
+		"prefix": "new Promise",
+		"body": [
+			"new Promise((resolve, reject) => {",
+			"    ",
+			"})"
+		],
+		"description": "create an ES6 Promise"
+	},
+	"promiseThen": {
+		"prefix": ".then",
+		"body": [
+			".then(${1:data} => {",
+			"    ",
+			"})"
+		],
+		"description": "add a .then handler to a promise"
+	},
+	"promiseCatch": {
+		"prefix": ".catch",
+		"body": [
+			".catch(err => {",
+			"    ",
+			"})"
+		],
+		"description": "add a .catch handler to a promise"
+	},
+	"promiseAll": {
+		"prefix": "Promise.all",
+		"body": [
+			"Promise.all([${1:promises}])"
+		],
+		"description": "add a .catch handler to a promise"
+	},
+	"promiseResolve": {
+		"prefix": "resolve",
+		"body": [
+			"resolve(${1:value});",
+		],
+		"description": "resolve a Promise"
+	},
+	"promiseReject": {
+		"prefix": "reject",
+		"body": [
+			"reject(${1:value});",
+		],
+		"description": "resolve a Promise"
+	},
+	"asyncWrapper": {
+		"prefix": "async",
+		"body": [
+			"(async () => {",
+			"    ",
+			"})();"
+		],
+		"description": "async function IEFE"
+	},
+	"consoleLog": {
+		"prefix": "log",
+		"body": [
+			"console.log(${1:message});"
+		],
+		"description": "log to the console"
+	},
+	"consoleError": {
+		"prefix": "err",
+		"body": [
+			"console.err(${1:message});"
+		],
+		"description": "log an error to the console"
+	},
+	"clearFlightsContainer": {
+		"prefix": "cardService.clearFlightsContainer",
+		"body": [
+			"cardService.clearFlightsContainer();",
+			""
+		],
+		"description": "clear all cards from the flights container"
+	},
+	"addFlightCardToPage": {
+		"prefix": "cardService.addFlightCardToPage",
+		"body": [
+			"cardService.addFlightCardToPage(flight, airline, aircraft, destination);"
+		],
+		"description": "add aflight cards to the flights container"
+	},
+	"getFlightsCallback": {
+		"prefix": "apiService.getFlightsCallback",
+		"body": [
+			"apiService.getFlights(flights => {",
+			"    ",
+			"});"
+		],
+		"description": "get flights from the apiService"
+	},
+	"getFlightsPromise": {
+		"prefix": "apiService.getFlightsPromise",
+		"body": [
+			"apiService.getFlights()"
+		],
+		"description": "get flights from the apiService"
+	},
+	"getAirlineCallback": {
+		"prefix": "apiService.getAirlineCallback",
+		"body": [
+			"apiService.getAirline(flight, airline => {",
+			"    ",
+			"});"
+		],
+		"description": "get the airline of a flight using callbacks"
+	},
+	"getAirlinePromise": {
+		"prefix": "apiService.getAirlinePromise",
+		"body": [
+			"apiService.getAirline(flight)"
+		],
+		"description": "get the airline of a flight using promises"
+	},
+	"getAircraftCallback": {
+		"prefix": "apiService.getAircraftCallback",
+		"body": [
+			"apiService.getAircraft(flight, aircraft => {",
+			"    ",
+			"});"
+		],
+		"description": "get the aircraft of a flight using callbacks"
+	},
+	"getAircraftPromise": {
+		"prefix": "apiService.getAircraftPromise",
+		"body": [
+			"apiService.getAircraft(flight)"
+		],
+		"description": "get the aircraft of a flight using promises"
+	},
+	"getDestinationCallback": {
+		"prefix": "apiService.getDestinationCallback",
+		"body": [
+			"apiService.getDestination(flight, destination => {",
+			"    ",
+			"});"
+		],
+		"description": "get the destination of a flight using callbacks"
+	},
+	"getDestinationPromise": {
+		"prefix": "apiService.getDestinationPromise",
+		"body": [
+			"apiService.getDestination(flight)"
+		],
+		"description": "get the destination of a flight using promises"
+	},
+	"createCallbackApiService": {
+		"prefix": "apiService",
+		"body": [
+			"const apiService = new FlightAPICallbackService('http://localhost:3000');"
+		],
+		"description": "creates an instance of the flight API service that uses callbacks"
+	},
+	"createPromiseApiService": {
+		"prefix": "apiService",
+		"body": [
+			"const apiService = new FlightAPIPromiseService('http://localhost:3000');",
+			""
+		],
+		"description": "creates an instance of the flight API service that uses promises"
+	},
+	"createCardService": {
+		"prefix": "cardService",
+		"body": [
+			"const cardService = new FlightCardService('#flights-container');",
+			""
+		],
+		"description": "creates an instance of the flight API service that uses promises"
+	},
+	"defineFlightDetailsVariables": {
+		"prefix": "let airline",
+		"body": [
+			"let airline, aircraft, destination;",
+			""
+		],
+		"description": "creates an instance of the flight API service that uses promises"
+	},
+	"definePromise": {
+		"prefix": "const p",
+		"body": [
+			"const p${1:Name} = "
+		],
+		"description": "create a variable the holds a promise"
+	},
+}

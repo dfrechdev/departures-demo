@@ -1,6 +1,6 @@
-# Arrivals
+# departures-demo
 
-A demo Oracle APEX application for my talk on async-await, that consumes data from the Schipol airport flight API and displays arriving flights.
+A demo Oracle APEX application for my talk on async-await, that consumes data from the Schipol airport flight API and displays departing flights.
 
 ## Prerequisites
 
