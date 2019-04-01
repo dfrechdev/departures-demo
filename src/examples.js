@@ -2,7 +2,7 @@
  * @description loading flights using callback functions and catching any possible errors in the callbacks
  * => must be used with the FlightAPICallbackService!
  */
-loadFlightsWithCallback = apiService => {
+loadFlightsWithCallbacks = apiService => {
     cardService.clearFlightsContainer();
     apiService.getFlights(flights => {
         flights.forEach(flight => {
@@ -21,14 +21,12 @@ loadFlightsWithCallback = apiService => {
  * @description loading flights fetching the details consecutively using promises and catching any error along the promise chain
  * => must be used with the FlightAPIPromiseService!
  */
-loadFlightsWithPromise = apiService => {
+loadFlightsWithPromises = apiService => {
     cardService.clearFlightsContainer();
     apiService
         .getFlights()
         .then(flights => {
-            // for (flight of flights) {
             flights.forEach(flight => {
-                // const arrivingFlight = flight;
                 let airline, aircraft, destination;
                 apiService
                     .getAirline(flight)

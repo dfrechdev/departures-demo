@@ -8,6 +8,19 @@ class FlightCardService {
         this.flightsContainer = document.querySelector(flightCardsContainer + " .t-Cards");
         this.routesEU = { S: "Schengen", E: "Europe", N: "Non-Europe" };
         this.appImages = document.getElementById("P10_APP_IMAGES").value;
+        this.flightStates = {
+            SCH: "Scheduled",
+            DEL: "Delayed",
+            WIL: "Wait in Lounge",
+            GTO: "Gate Open",
+            BRD: "Boarding",
+            GCL: "Gate Closing",
+            GTD: "Gate closed",
+            DEP: "Departed",
+            CNX: "Cancelled",
+            GCH: "Gate Change",
+            TOM: "Tomorrow"
+        };
     }
 
     /**
@@ -26,29 +39,43 @@ class FlightCardService {
     };
 
     /**
+     * @description Returns the flight status description of a flight
+     */
+    getFlightState(flight) {
+        return this.flightStates[flight.publicFlightState.flightStates[0]] || "undefined";
+    }
+
+    /**
      * @description adds a flight card to the flight card container
      * @param {Flight} flight - mandatory, flight to add
      * @param {Airline} airline - optional, airline operating the flight
      * @param {Aircraft} aircraft - optional, aircraft used for this flight
-     * @param {Destination} destination - optional, destination (or origin for arrivals) of the flight
+     * @param {Destination} destination - optional, destination of the flight
      */
     getFlightCard = (flight, airline, aircraft, destination) => {
+        const terminalIcon = flight.terminal
+            ? `
+<div class="t-Card-icon">
+    <span style="background:url(${this.appImages}static/terminal${
+                  flight.terminal
+              }.png) no-repeat top left;background-size:cover;width:35px;"></span>
+</div>`
+            : "";
+
         return `
 <li class="t-Cards-item ">
     <div class="t-Card">
         <a href="#" class="t-Card-wrap">
-            <div class="t-Card-icon">
-                <span style="background:url(${this.appImages}static/terminal${
-            flight.terminal
-        }.png) no-repeat top left;background-size:cover;width:35px;"></span>
-            </div>
+            ${terminalIcon}
             <div class="t-Card-titleWrap">
                 <h3 class="t-Card-title">${moment(
-                    flight.estimatedLandingTime,
+                    flight.scheduleDateTime,
                     "YYYY-MM-DDTHH:mm:ss.SSS"
                 ).format("hh:mm")} - ${flight.flightName}</h3>
                 <h4 class="t-Card-subtitle flight-card-subtitle">${
-                    destination && destination.city ? destination.city : "Undefined"
+                    destination && destination.publicName
+                        ? destination.publicName.english
+                        : "Undefined"
                 }, ${destination && destination.country ? destination.country : "XX"}</h4>
             </div>
             <div class="t-Card-body">
@@ -78,16 +105,12 @@ class FlightCardService {
                         </div>
                         <div class="item">
                             <div class="fligt-detail-label">Gate:</div>
-                            <div class="header">${flight.gate ? flight.gate : "n/a"}</div>
-                        </div>   
+                            <div class="header">${flight.gate ? flight.gate : "not defined"}</div>
+                        </div>     
                         <div class="item">
-                            <div class="fligt-detail-label">Baggage claim:</div>
-                            <div class="header">${
-                                flight.baggageClaim && flight.baggageClaim.belts
-                                    ? flight.baggageClaim.belts.join(",")
-                                    : "n/a"
-                            }</div>
-                        </div>                                              
+                            <div class="fligt-detail-label">Status:</div>
+                            <div class="header">${this.getFlightState(flight)}</div>
+                        </div>                                             
                         <div class="flight-codeshares">${
                             flight.codeshares && flight.codeshares.codeshares
                                 ? "also known as: " + flight.codeshares.codeshares.join(", ")

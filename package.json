@@ -1,20 +1,20 @@
 {
-    "name": "arrivals",
+    "name": "departures-demo",
     "version": "1.0.0",
-    "description": "A demo Oracle APEX application for my talk on async-await, that consumes data from the Schipol airport flight API and displays arriving flights.",
+    "description": "A demo Oracle APEX application for my talk on async-await, that consumes data from the Schipol airport flight API and displays departing flights.",
     "scripts": {
-        "launch": "apex-nitro launch arrivals",
-        "publish": "apex-nitro publish arrivals",
-        "config": "apex-nitro config arrivals"
+        "launch": "apex-nitro launch departures",
+        "publish": "apex-nitro publish departures",
+        "config": "apex-nitro config departures"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dfrechdev/arrivals.git"
+        "url": "git+https://github.com/dfrechdev/departures-demo.git"
     },
     "author": "Daniel Frech",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/dfrechdev/arrivals/issues"
+        "url": "https://github.com/dfrechdev/departures-demo/issues"
     },
-    "homepage": "https://github.com/dfrechdev/arrivals#readme"
+    "homepage": "https://github.com/dfrechdev/departures-demo#readme"
 }

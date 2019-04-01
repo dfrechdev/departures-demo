@@ -1,6 +1,6 @@
 # Arrivals
 
-A demo Oracle APEX application that consumes data from the Schipol airport flight API and displays the arriving flights.
+A demo Oracle APEX application for my talk on async-await, that consumes data from the Schipol airport flight API and displays arriving flights.
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ This is equivalent to running "apex-nitro launch arrivals".
 
 ## Issues
 
-This project is intended for demo applications such as for talks or workshops. If you encounter a problem create an issue or feel fre to open a pull request if you know the fix.
+This project is intended for demo applications such as for talks or workshops. If you encounter a problem create an issue or feel free to open a pull request if you know the fix.
 
 ## License
 

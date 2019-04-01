@@ -1,9 +1,9 @@
 /**
  * @class FlightAPIService
- * @description Class to handle all calls to the flight API, as well as client side caching of flight details
+ * @description Class to handle all calls to the flight API using callback functions. Includes client side caching of flight details
  * @param {string} apiHost  - URL of the flight API
  */
-class FlightAPIService {
+class FlightAPICallbackService {
     constructor(apiHost) {
         this.apiHost = apiHost;
         this.aircraftsCache = new Map();
@@ -18,7 +18,7 @@ class FlightAPIService {
         $.getJSON(
             `${this.apiHost}/flights`,
             {
-                flightDirection: "A",
+                flightDirection: "D",
                 serviceType: "J",
                 routesEU: document.getElementById("P10_ROUTES_EU").value,
                 terminal: document.getElementById("P10_TERMINAL").value
@@ -38,6 +38,8 @@ class FlightAPIService {
                       this.airlinesCache.set(response[0].iata, response[0]);
                       callback(response[0]);
                   });
+        } else {
+            return callback({ publicName: "not defined" });
         }
     };
 
@@ -63,6 +65,8 @@ class FlightAPIService {
                           callback(aircraft[0]);
                       }
                   );
+        } else {
+            return callback({ shortDescription: "undefined" });
         }
     };
 
@@ -70,7 +74,6 @@ class FlightAPIService {
      * @description fetches the destination of a flight using a callback function
      */
     getDestination = (flight, callback) => {
-        console.log(flight.route.destinations[0]);
         if (flight.route && flight.route.destinations) {
             this.destinationCache.has(flight.route.destinations[0])
                 ? callback(this.destinationCache.get(flight.route.destinations[0]))
@@ -81,6 +84,8 @@ class FlightAPIService {
                           callback(destination);
                       }
                   );
+        } else {
+            callback({ publicName: { english: "not defined" } });
         }
     };
 

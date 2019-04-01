@@ -1,9 +1,9 @@
 /**
- * @class FlightAPIService
- * @description Class to handle all calls to the flight API, as well as client side caching of flight details
+ * @class FlightAPIPromiseService
+ * @description Class to handle all calls to the flight API using promises. Includes client side caching of flight details
  * @param {string} apiHost  - URL of the flight API
  */
-class FlightAPIService {
+class FlightAPIPromiseService {
     constructor(apiHost) {
         this.apiHost = apiHost;
         this.aircraftsCache = new Map();
@@ -17,7 +17,7 @@ class FlightAPIService {
     getFlights = () => {
         const url = new URL(`${this.apiHost}/flights`);
         const params = {
-            flightDirection: "A",
+            flightDirection: "D",
             serviceType: "J",
             routesEU: document.getElementById("P10_ROUTES_EU").value,
             terminal: document.getElementById("P10_TERMINAL").value
@@ -41,6 +41,7 @@ class FlightAPIService {
                           return data[0];
                       });
         }
+        return Promise.resolve({ publicName: "not defined" });
     };
 
     /**
@@ -90,6 +91,7 @@ class FlightAPIService {
                           return destination;
                       });
         }
+        Promise.resolve({ publicName: { english: "not defined" } });
     };
 
     getAircraftID(flight) {
