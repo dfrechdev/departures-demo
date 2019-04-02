@@ -4,7 +4,6 @@ const apiService = new FlightAPIPromiseService("http://localhost:3000");
 const cardService = new FlightCardService("#flights-container");
 
 // main function responsible for loading the flights
-const loadFlights = () => {
-    cardService.clearFlightsContainer();
-    loadFlightsWithPromises(apiService);
+const loadFlights = async () => {
+    loadFlightsWithAsyncAwaitParallel(apiService, cardService);
 };

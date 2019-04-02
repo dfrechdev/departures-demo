@@ -6,21 +6,7 @@
 class FlightCardService {
     constructor(flightCardsContainer) {
         this.flightsContainer = document.querySelector(flightCardsContainer + " .t-Cards");
-        this.routesEU = { S: "Schengen", E: "Europe", N: "Non-Europe" };
-        this.appImages = document.getElementById("P10_APP_IMAGES").value;
-        this.flightStates = {
-            SCH: "Scheduled",
-            DEL: "Delayed",
-            WIL: "Wait in Lounge",
-            GTO: "Gate Open",
-            BRD: "Boarding",
-            GCL: "Gate Closing",
-            GTD: "Gate closed",
-            DEP: "Departed",
-            CNX: "Cancelled",
-            GCH: "Gate Change",
-            TOM: "Tomorrow"
-        };
+        this.appImagesPath = document.getElementById("P10_APP_IMAGES").value;
     }
 
     /**
@@ -33,30 +19,61 @@ class FlightCardService {
     /**
      * @description adds a flight card to the flight card container
      */
-    addFlightCardToPage = (flight, airline, aircraft, destination) => {
-        const flightCard = this.getFlightCard(flight, airline, aircraft, destination);
-        this.flightsContainer.innerHTML += flightCard;
+    addCardToPage = flightCard => {
+        this.flightsContainer.innerHTML += this.getHTML(flightCard);
     };
+
+    /**
+     * @description Adds the flightCard to the Page, if all details have been set
+     */
+    addCardIfAllIsSet(flightCard) {
+        if (
+            flightCard.flight &&
+            flightCard.airline &&
+            flightCard.aircraft &&
+            flightCard.destination
+        ) {
+            this.addCardToPage(flightCard);
+        }
+    }
 
     /**
      * @description Returns the flight status description of a flight
      */
     getFlightState(flight) {
-        return this.flightStates[flight.publicFlightState.flightStates[0]] || "undefined";
+        const flightStates = {
+            SCH: "Scheduled",
+            DEL: "Delayed",
+            WIL: "Wait in Lounge",
+            GTO: "Gate Open",
+            BRD: "Boarding",
+            GCL: "Gate Closing",
+            GTD: "Gate closed",
+            DEP: "Departed",
+            CNX: "Cancelled",
+            GCH: "Gate Change",
+            TOM: "Tomorrow"
+        };
+        return flightStates[flight.publicFlightState.flightStates[0]] || "not defined";
     }
 
     /**
-     * @description adds a flight card to the flight card container
-     * @param {Flight} flight - mandatory, flight to add
-     * @param {Airline} airline - optional, airline operating the flight
-     * @param {Aircraft} aircraft - optional, aircraft used for this flight
-     * @param {Destination} destination - optional, destination of the flight
+     * @description Returns the route of a flight
      */
-    getFlightCard = (flight, airline, aircraft, destination) => {
+    getRoutesEU(flight) {
+        const routesEU = { S: "Schengen", E: "Europe", N: "Non-Europe" };
+        return flight.route && flight.route.eu ? routesEU[flight.route.eu] : "not defined";
+    }
+
+    /**
+     * @description returns the HTML for a flight card
+     * @param {FlightCard} flightCard - mandatory, flight card to generate the HTML for
+     */
+    getHTML = ({ flight, airline, aircraft, destination }) => {
         const terminalIcon = flight.terminal
             ? `
 <div class="t-Card-icon">
-    <span style="background:url(${this.appImages}static/terminal${
+    <span style="background:url(${this.appImagesPath}static/terminal${
                   flight.terminal
               }.png) no-repeat top left;background-size:cover;width:35px;"></span>
 </div>`
@@ -97,11 +114,7 @@ class FlightCardService {
                         </div>
                         <div class="item">
                             <div class="fligt-detail-label">Route:</div>
-                            <div class="header">${
-                                flight.route && flight.route.eu
-                                    ? this.routesEU[flight.route.eu]
-                                    : "?"
-                            }</div>
+                            <div class="header">${this.getRoutesEU(flight)}</div>
                         </div>
                         <div class="item">
                             <div class="fligt-detail-label">Gate:</div>

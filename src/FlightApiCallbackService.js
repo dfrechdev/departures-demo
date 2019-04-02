@@ -58,10 +58,12 @@ class FlightAPICallbackService {
                           iataSub: flight.aircraftType.iataSub
                       },
                       aircraft => {
-                          this.aircraftsCache.set(
-                              `${aircraft[0].iataMain || ""}.${aircraft[0].iataSub || ""}`,
-                              aircraft[0]
-                          );
+                          aircraft && aircraft.length > 0
+                              ? this.aircraftsCache.set(
+                                    `${aircraft[0].iataMain || ""}.${aircraft[0].iataSub || ""}`,
+                                    aircraft[0]
+                                )
+                              : null;
                           callback(aircraft[0]);
                       }
                   );

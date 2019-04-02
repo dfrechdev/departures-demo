@@ -67,10 +67,12 @@ class FlightAPIPromiseService {
             })
                 .then(response => response.json())
                 .then(data => {
-                    this.aircraftsCache.set(
-                        `${data[0].iataMain || ""}.${data[0].iataSub || ""}`,
-                        data[0]
-                    );
+                    data && data.length > 0
+                        ? this.aircraftsCache.set(
+                              `${data[0].iataMain || ""}.${data[0].iataSub || ""}`,
+                              data[0]
+                          )
+                        : null;
                     return data[0];
                 });
         }
