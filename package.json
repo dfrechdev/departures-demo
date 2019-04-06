@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "description": "A demo Oracle APEX application for my talk on async-await, that consumes data from the Schipol airport flight API and displays departing flights.",
     "scripts": {
-        "launch": "apex-nitro launch departures",
-        "publish": "apex-nitro publish departures",
-        "config": "apex-nitro config departures"
+        "launch": "apex-nitro launch departures-demo",
+        "publish": "apex-nitro publish departures-demo",
+        "config": "apex-nitro config departures-demo"
     },
     "repository": {
         "type": "git",
