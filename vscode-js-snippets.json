@@ -1,0 +1,146 @@
+{
+    "forEachLoop": {
+        "prefix": ".forEach",
+        "body": [".forEach(${1:element} => {", "    ", "})"],
+        "description": "create a let variable"
+    },
+    "forOfLoop": {
+        "prefix": "forof",
+        "body": ["for(const ${1:arrayItem} of ${2:array}){", "    ", "}"],
+        "description": "create a let variable"
+    },
+    "promise": {
+        "prefix": "new Promise",
+        "body": ["new Promise((resolve, reject) => {", "    ", "})"],
+        "description": "create an ES6 Promise"
+    },
+    "promiseThen": {
+        "prefix": ".then",
+        "body": [".then(${1:data} => {", "    ", "})"],
+        "description": "add a .then handler to a promise"
+    },
+    "promiseCatch": {
+        "prefix": ".catch",
+        "body": [".catch(err => {", "    ", "})"],
+        "description": "add a .catch handler to a promise"
+    },
+    "promiseAll": {
+        "prefix": "Promise.all",
+        "body": ["Promise.all([${1:promises}])"],
+        "description": "add a .catch handler to a promise"
+    },
+    "consoleLog": {
+        "prefix": "console.log",
+        "body": ["console.log(${1:message});"],
+        "description": "log to the console"
+    },
+    "consoleError": {
+        "prefix": "console.error",
+        "body": ["console.err(${1:message});"],
+        "description": "log an error to the console"
+    },
+    "clearFlightsContainer": {
+        "prefix": "cardService.clearFlightsContainer",
+        "body": ["cardService.clearFlightsContainer();", ""],
+        "description": "clear all cards from the flights container"
+    },
+    "addCardToPage": {
+        "prefix": "cardService.addCardToPage",
+        "body": ["cardService.addCardToPage(flightCard);"],
+        "description": "add a flight card to the flights container"
+    },
+    "getFlights": {
+        "prefix": "apiService.getFlights",
+        "body": ["apiService.getFlights()"],
+        "description": "get flights from the apiService"
+    },
+    "getAirline": {
+        "prefix": "apiService.getAirline",
+        "body": ["apiService.getAirline(flight)"],
+        "description": "get the airline of a flight"
+    },
+    "getAircraft": {
+        "prefix": "apiService.getAircraft",
+        "body": ["apiService.getAircraft(flight)"],
+        "description": "get the aircraft of a flight"
+    },
+    "getDestinationPromise": {
+        "prefix": "apiService.getDestination",
+        "body": ["apiService.getDestination(flight)"],
+        "description": "get the destination of a flight"
+    },
+    "createCallbackApiService": {
+        "prefix": "new FlightAPICallbackService",
+        "body": ["const apiService = new FlightAPICallbackService('http://localhost:3000');"],
+        "description": "creates an instance of the flight API service that uses callbacks"
+    },
+    "createPromiseApiService": {
+        "prefix": "new FlightAPIPromiseService",
+        "body": ["const apiService = new FlightAPIPromiseService('http://localhost:3000');", ""],
+        "description": "creates an instance of the flight API service that uses promises"
+    },
+    "createCardService": {
+        "prefix": "new FlightCardService",
+        "body": ["const cardService = new FlightCardService('#flights-container');", ""],
+        "description": "creates an instance of the flight API service that uses promises"
+    },
+    "defineFlightDetailsVariables": {
+        "prefix": "let airline",
+        "body": ["let airline, aircraft, destination;", ""],
+        "description": "creates an instance of the flight API service that uses promises"
+    },
+    "airline": {
+        "prefix": "airline",
+        "body": ["airline"]
+    },
+    "aircraft": {
+        "prefix": "aircraft",
+        "body": ["aircraft"]
+    },
+    "destination": {
+        "prefix": "destination",
+        "body": ["destination"]
+    },
+    "pAirline": {
+        "prefix": "pAirline",
+        "body": ["pAkirline"]
+    },
+    "pAircraft": {
+        "prefix": "pAircraft",
+        "body": ["pAircraft"]
+    },
+    "pDestination": {
+        "prefix": "pDestination",
+        "body": ["pDestination"]
+    },
+    "setAirline": {
+        "prefix": "flightCard.setAirline",
+        "body": ["flightCard.setAirline(airline);"],
+        "description": "add an airline to the flight card"
+    },
+    "setAircraft": {
+        "prefix": "flightCard.setAircraft",
+        "body": ["flightCard.setAircraft(aircraft);"],
+        "description": "add an aircraft to the flight card"
+    },
+    "setDestination": {
+        "prefix": "flightCard.setDestination",
+        "body": ["flightCard.setDestination(destination);"],
+        "description": "add a destination to the flight card"
+    },
+    "setDeTails": {
+        "prefix": "flightCard.setDetails",
+        "body": ["flightCard.setDetails(airline, aircraft, destination);"],
+        "description": "add the flight details to the flight card"
+    },
+    "addCardIfAllIsSet": {
+        "prefix": "addCardIfAllIsSet",
+        "body": ["cardService.addCardIfAllIsSet(flightCard);"],
+        "description": "add the flight card to the page if all details have been set"
+    },
+    "newFlightCard": {
+        "prefix": "new FlightCard",
+        "body": ["new FlightCard(flight);"],
+        "description": "initialize a new flight card"
+    }
+}
