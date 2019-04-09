@@ -6,7 +6,7 @@
 const apiService = new FlightAPICallbackService("http://localhost:3000");
 const cardService = new FlightCardService("#flights-container");
 
-loadFlights = () => {
+const loadFlights = () => {
     try {
         apiService.getFlights(flights => {
             flights.forEach(flight => {

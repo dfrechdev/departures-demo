@@ -92,8 +92,8 @@ class FlightCardService {
                 <h4 class="t-Card-subtitle flight-card-subtitle">${
                     destination && destination.publicName
                         ? destination.publicName.english
-                        : "Undefined"
-                }, ${destination && destination.country ? destination.country : "XX"}</h4>
+                        : "undefined"
+                }, ${destination && destination.country ? destination.country : "undefined"}</h4>
             </div>
             <div class="t-Card-body">
                 <div class="t-Card-desc flight-details">
@@ -109,7 +109,7 @@ class FlightCardService {
                             <div class="header">${
                                 aircraft && aircraft.shortDescription
                                     ? aircraft.shortDescription
-                                    : "Unknown"
+                                    : "undefined"
                             }</div>
                         </div>
                         <div class="item">

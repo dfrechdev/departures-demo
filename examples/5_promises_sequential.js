@@ -4,12 +4,11 @@
 const apiService = new FlightAPIPromiseService("http://localhost:3000");
 const cardService = new FlightCardService("#flights-container");
 
-loadFlights = () => {
+const loadFlights = () => {
     apiService
         .getFlights()
         .then(flights => {
             flights.forEach(flight => {
-                console.log(flight);
                 let flightCard = new FlightCard(flight);
                 apiService
                     .getAirline(flight)

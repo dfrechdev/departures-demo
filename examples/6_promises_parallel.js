@@ -4,7 +4,7 @@
 const apiService = new FlightAPIPromiseService("http://localhost:3000");
 const cardService = new FlightCardService("#flights-container");
 
-loadFlights = () => {
+const loadFlights = () => {
     apiService
         .getFlights()
         .then(flights => {

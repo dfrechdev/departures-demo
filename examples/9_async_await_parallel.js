@@ -4,7 +4,7 @@
 const apiService = new FlightAPIPromiseService("http://localhost:3000");
 const cardService = new FlightCardService("#flights-container");
 
-loadFlights = async () => {
+const loadFlights = async () => {
     try {
         const flights = await apiService.getFlights();
         for (const flight of flights) {
