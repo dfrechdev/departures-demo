@@ -13,12 +13,16 @@ const loadFlights = () => {
             const pDestination = apiService.getDestination(flight);
             pFlights.push(Promise.all([flight, pAirline, pAircraft, pDestination]));
         });
-        Promise.all(pFlights).then(flightDataSets => {
-            flightDataSets.forEach(([flight, airline, aircraft, destination]) => {
-                const flightCard = new FlightCard(flight);
-                flightCard.setDetails(airline, aircraft, destination);
-                cardService.addCardToPage(flightCard);
+        Promise.all(pFlights)
+            .then(flightDataSets => {
+                flightDataSets.forEach(([flight, airline, aircraft, destination]) => {
+                    const flightCard = new FlightCard(flight);
+                    flightCard.setDetails(airline, aircraft, destination);
+                    cardService.addCardToPage(flightCard);
+                });
+            })
+            .catch(err => {
+                console.error(err);
             });
-        });
     });
 };
