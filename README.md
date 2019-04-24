@@ -45,6 +45,14 @@ npm run apex-config
 
 ## Starting the app
 
+Before you start the app, make sure that the flight API is up and running. For this, change to the flight API folder and issue the following command:
+
+```bash
+npm run start
+```
+
+After that you can start the app either with the embedded ewb server or with APEX.
+
 ### Start with the embedded local web server
 
 ```bash
@@ -70,6 +78,12 @@ If you want to push changes in the ./src/apex folder to APEX permanently, you ca
 ```bash
 npm run apex-publish
 ```
+
+## Changing and testing the source code
+
+In the source code, the departures.js file has the implementation for loading the flight cards of the page. You find the it in ./src/local/js/departures.js if you are running the embedded web server, or in ./src/apex/departures.js if you are using the APEX application.
+
+You can there try the different options such as callback functions, promises or async/await. Check the ./examples folder for different implementation examples.
 
 ## Issues
 
