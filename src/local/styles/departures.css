@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+input,
+optgroup,
+select,
+textarea,
+div,
+span {
+    font-family: "Open Sans", sans-serif;
+}
+.header.item {
+    border: none !important;
+    position: inherit !important;
+    padding: 1rem 0 !important;
+    font-size: 2rem;
+}

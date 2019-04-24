@@ -1,12 +1,11 @@
 /**
  * @class FlightCardService
- * @description Class to create, add and remove flight cards from the web page container
+ * @description Class to create, add and remove flight cards from the web page container of the APEX app page
  * @param {string} flightCardsContainer - query selector of the HTML element containing the flight cards
  */
 class FlightCardService {
     constructor(flightCardsContainer) {
-        this.flightsContainer = document.querySelector(flightCardsContainer + " .t-Cards");
-        this.appImagesPath = document.getElementById("P10_APP_IMAGES").value;
+        this.flightsContainer = document.querySelector(flightCardsContainer);
     }
 
     /**
@@ -71,11 +70,75 @@ class FlightCardService {
      */
     getHTML = ({ flight, airline, aircraft, destination }) => {
         const terminalIcon = flight.terminal
+            ? `<img class="right floated mini ui image" src="/static/images/terminal${
+                  flight.terminal
+              }.png">`
+            : "";
+
+        return `
+<div class="card">
+    <div class="content">
+        ${terminalIcon}
+        <div class="header">
+        ${moment(flight.scheduleDateTime, "YYYY-MM-DDTHH:mm:ss.SSS").format("hh:mm")} - ${
+            flight.flightName
+        }
+        </div>
+        <div class="meta">
+        ${destination && destination.publicName ? destination.publicName.english : "undefined"}, ${
+            destination && destination.country ? destination.country : "undefined"
+        }
+        </div>
+        <div class="description">
+        <div class="t-Card-desc flight-details">
+        <div class="ui list">
+            <div class="item">
+                <div class="fligt-detail-label">Airline:</div>
+                <div class="header">${
+                    airline && airline.publicName ? airline.publicName : "undefined"
+                }</div>
+            </div>
+            <div class="item">
+                <div class="fligt-detail-label">Aircraft:</div>
+                <div class="header">${
+                    aircraft && aircraft.shortDescription ? aircraft.shortDescription : "undefined"
+                }</div>
+            </div>
+            <div class="item">
+                <div class="fligt-detail-label">Route:</div>
+                <div class="header">${this.getRoutesEU(flight)}</div>
+            </div>
+            <div class="item">
+                <div class="fligt-detail-label">Gate:</div>
+                <div class="header">${flight.gate ? flight.gate : "not defined"}</div>
+            </div>     
+            <div class="item">
+                <div class="fligt-detail-label">Status:</div>
+                <div class="header">${this.getFlightState(flight)}</div>
+            </div>                                             
+            <div class="flight-codeshares">${
+                flight.codeshares && flight.codeshares.codeshares
+                    ? "also known as: " + flight.codeshares.codeshares.join(", ")
+                    : ""
+            }</div>   
+        </div>  
+    </div>  
+        </div>
+    </div>
+</div>`;
+    };
+
+    /**
+     * @description returns the HTML for a flight card
+     * @param {FlightCard} flightCard - mandatory, flight card to generate the HTML for
+     */
+    getHTMLApex = ({ flight, airline, aircraft, destination }) => {
+        const terminalIcon = flight.terminal
             ? `
 <div class="t-Card-icon">
-    <span style="background:url(${this.appImagesPath}static/terminal${
-                  flight.terminal
-              }.png) no-repeat top left;background-size:cover;width:35px;"></span>
+    <span style="background:url(/static/images/terminal${
+        flight.terminal
+    }.png) no-repeat top left;background-size:cover;width:35px;"></span>
 </div>`
             : "";
 
