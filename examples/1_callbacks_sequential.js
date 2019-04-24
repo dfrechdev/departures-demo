@@ -1,9 +1,4 @@
-/**
- * @description
- * loading flights using sequential callback functions
- * and catching any possible errors in the callbacks
- */
-const apiService = new FlightAPICallbackService("http://localhost:3000");
+const apiService = new FlightAPIPromiseService("http://localhost:3000");
 const cardService = new FlightCardService("#flights-container");
 
 const loadFlights = () => {
